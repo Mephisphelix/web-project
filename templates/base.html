@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cohort website</title>
+</head>
+ <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  background: #f2f2f2;
+}
+nav{
+  background: #171c24;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 100px;
+}
+nav .logo{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+nav .nav-items{
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 40px;
+}
+nav .nav-items li{
+  list-style: none;
+  padding: 0 15px;
+}
+nav .nav-items li a{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+nav .nav-items li a:hover{
+  color: #ff3d00;
+}
+nav form{
+  display: flex;
+  height: 40px;
+  padding: 2px;
+  background: #1e232b;
+  min-width: 18%!important;
+  border-radius: 2px;
+  border: 1px solid rgba(155,155,155,0.2);
+}
+nav form .search-data{
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  font-weight: 500;
+  background: none;
+}
+nav form button{
+  padding: 0 15px;
+  color: #fff;
+  font-size: 17px;
+  background: #ff3d00;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+nav form button:hover{
+  background: #e63600;
+}
+nav .menu-icon,
+nav .cancel-icon,
+nav .search-icon{
+  width: 40px;
+  text-align: center;
+  margin: 0 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+nav .menu-icon span,
+nav .cancel-icon,
+nav .search-icon{
+  display: none;
+}
+@media (max-width: 1245px) {
+  nav{
+    padding: 0 50px;
+  }
+}
+@media (max-width: 1140px){
+  nav{
+    padding: 0px;
+  }
+  nav .logo{
+    flex: 2;
+    text-align: center;
+  }
+  nav .nav-items{
+    position: fixed;
+    z-index: 99;
+    top: 70px;
+    width: 100%;
+    left: -100%;
+    height: 100%;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    background: #14181f;
+    display: inline-block;
+    transition: left 0.3s ease;
+  }
+  nav .nav-items.active{
+    left: 0px;
+  }
+  nav .nav-items li{
+    line-height: 40px;
+    margin: 30px 0;
+  }
+  nav .nav-items li a{
+    font-size: 20px;
+  }
+  nav form{
+    position: absolute;
+    top: 80px;
+    right: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: top 0.3s ease, opacity 0.1s ease;
+  }
+  nav form.active{
+    top: 95px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav form:before{
+    position: absolute;
+    content: "";
+    top: -13px;
+    right: 0px;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    border: 10px solid transparent;
+    border-bottom-color: #1e232b;
+    margin: -20px 0 0;
+  }
+  nav form:after{
+    position: absolute;
+    content: '';
+    height: 60px;
+    padding: 2px;
+    background: #1e232b;
+    border-radius: 2px;
+    min-width: calc(100% + 20px);
+    z-index: -2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  nav .menu-icon{
+    display: block;
+  }
+  nav .search-icon,
+  nav .menu-icon span{
+    display: block;
+  }
+  nav .menu-icon span.hide,
+  nav .search-icon.hide{
+    display: none;
+  }
+  nav .cancel-icon.show{
+    display: block;
+  }
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.content header{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .text{
+  font-size: 30px;
+  font-weight: 700;
+}
+.space{
+  margin: 10px 0;
+}
+nav .logo.space{
+  color: red;
+  padding: 0 5px 0 0;
+}
+@media (max-width: 980px){
+  nav .menu-icon,
+  nav .cancel-icon,
+  nav .search-icon{
+    margin: 0 20px;
+  }
+  nav form{
+    right: 30px;
+  }
+}
+@media (max-width: 350px){
+  nav .menu-icon,
+  nav .cancel-icon,
+  nav .search-icon{
+    margin: 0 10px;
+    font-size: 16px;
+  }
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content header{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .text{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .space{
+  margin: 10px 0;
+}
+.sub-menu1 {
+  display: none;
+  visibility: visible; z-index: 100;
+}
+
+nav .nav-items li:hover .sub-menu1{
+  display: block;
+  position: absolute;
+  background: grey;
+  margin-top: 5px;
+  margin-left: -15px;
+}
+nav .nav-items li:hover .sub-menu1 ul li{
+  display: block;
+  margin-top: 5px;
+}
+
+nav .nav-items li:hover .sub-menu1 ul li {
+  width: 150px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+}
+nav .nav-items li:hover .sub-menu1 ul li a:hover{
+  color: white;
+  background-color: darkorange;
+}
+.sub-menu2 {
+  display: none;
+  visibility: visible; z-index: 100;
+}
+
+nav .nav-items li:hover .sub-menu2{
+  display: block;
+  position: absolute;
+  background: grey;
+  margin-top: 5px;
+  margin-left: -15px;
+}
+nav .nav-items li:hover .sub-menu2 ul li{
+  display: block;
+  margin-top: 5px;
+}
+
+nav .nav-items li:hover .sub-menu2 ul li {
+  width: 150px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+}
+nav .nav-items li:hover .sub-menu2 ul li a:hover{
+  color: white;
+  background-color: darkorange;
+}
+.sub-menu3 {
+  display: none;
+  visibility: visible; z-index: 100;
+}
+
+nav .nav-items li:hover .sub-menu3{
+  display: block;
+  position: absolute;
+  background: grey;
+  margin-top: 5px;
+  margin-left: -15px;
+}
+nav .nav-items li:hover .sub-menu3 ul li{
+  display: block;
+  margin-top: 5px;
+}
+
+nav .nav-items li:hover .sub-menu3 ul li {
+  width: 150px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+}
+nav .nav-items li:hover .sub-menu3 ul li a:hover{
+  color: white;
+  background-color: darkorange;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.wrapper{
+  display: grid;
+  margin: 200px px auto;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+@media (max-width: 500px) {
+  .wrapper{
+    margin: 200px auto;
+  }
+}
+.wrapper .box{
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+}
+.wrapper .box .front-face{
+  background: skyblue;
+  height: 220px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+.box .front-face .icon{
+  height: 80px;
+}
+.box .front-face .icon i{
+  font-size: 65px;
+}
+.box .front-face span,
+.box .back-face span{
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.box .front-face .icon i,
+.box .front-face span{
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.box .back-face{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 220px;
+  width: 100%;
+  padding: 30px;
+  color: #fff;
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  transform: translateY(110px) rotateX(-90deg);
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+.box .back-face p{
+  margin-top: 10px;
+  text-align: justify;
+}
+.box:hover .back-face{
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+.box:hover .front-face{
+  opacity: 0;
+  transform: translateY(-110px) rotateX(90deg);
+}
+
+
+
+
+  </style>
+<head>
+	<h1 class="head"><center>COHORT YOUTH GROUP</center></h1>
+    <nav>
+      <div class="menu-icon">
+<span class="fas fa-bars"></span></div>
+<div class="logo">
+Cohort online banking</div>
+<div class="nav-items">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a>
+  <div class="sub-menu1">
+            <ul>
+              <li><a href="./html/about.html">FOUNDETION</a></li>
+              <li><a href="./html/vs.html">VISION</a></li>
+              <li><a href="./html/ms.html">MISSION</a></li>
+              <li><a href="./html/tp.html">TERMS AND<br> POLICYS</a></li>
+            </ul>
+          </div>
+</li>
+<li><a href="#">Account</a>
+  <div class="sub-menu2">
+            <ul>
+              <li><a href="">ACCOUNT</a></li>
+              <li><a href="">LOAN</a></li>
+            </ul>
+          </div>
+</li>
+<li><a href="#">Books acc</a></li>
+<li><a href="#">Event&projects</a>
+  <div class="sub-menu3">
+            <ul>
+              <li><a href="">Events</a></li>
+              <li><a href="">Projects</a></li>
+            </ul>
+          </div>
+</li>
+<li><a href="#">contact</a></li>
+</div>
+<div class="search-icon">
+<span class="fas fa-search"></span></div>
+<div class="cancel-icon">
+<span class="fas fa-times"></span></div>
+<form action="#">
+        <input type="search" class="search-data" placeholder="Search" required>
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+</nav>
+    
+   
+<script>
+    const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+    menuBtn.onclick = ()=>{
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+    cancelBtn.onclick = ()=>{
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    }
+    searchBtn.onclick = ()=>{
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+  </script>
+</head>
+<body>
+	{%block content %}
+	{%endblock content %}
+
+</body>
+<footer> 
+	<div class="wrapper">
+      <div class="box">
+        <div class="front-face">
+          <div class="icon">
+<i class="fas fa-code"></i></div>
+<span><center>Web Design</center></span>
+        </div>
+<div class="back-face">
+          <span><center>Web Design</center></span>
+          <p>
+Its designed and maintained by prof ogalo.The developer is also special in mobile app development among others.</p>
+</div>
+</div>
+
+<div class="box">
+        <div class="front-face">
+          <div class="icon">
+<i class="fas fa-chart-line"></i></div>
+<span><center>Investment</center></span>
+        </div>
+<div class="back-face">
+          <span><center>Investment</center></span>
+          <p>
+if you have been looking for a place to invest then this is the place your invest is safe and secure.its aplace for the choosen few.</p>
+</div>
+</div>
+<div class="box">
+        <div class="front-face">
+          <div class="icon">
+<i class="fas fa-rocket"></i></div>
+<span><center>Low Loan Rate</center></span>
+        </div>
+<div class="back-face">
+          <span><center>Low Loan Rate</center></span>
+          <p>
+we offer affordable loans of low intrest and long periods for payment.Its the best loan institution for the choosen ones join today and secure a place</p>
+</div>
+</div>
+</div>
+</footer>
+</html>
